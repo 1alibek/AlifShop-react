@@ -11,7 +11,7 @@ const MyCarousel = () => {
     <Carousel
        autoPlay={true} 
       infiniteLoop={true} 
-      interval={1000} 
+      interval={2000} 
       showThumbs={false}
       showStatus={false}  className="mt-8">
       <div>
