@@ -2,10 +2,10 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import swiper1 from "../../../assets/img/swiper1.png";
-import swiper2 from "../../../assets/img/swiper2.png";
-import swiper3 from "../../../assets/img/swiper3.png";
-import swiper4 from "../../../assets/img/swiper4.png";
+import swiper1 from "../../assets/img/swiper1.png";
+import swiper2 from "../../assets/img/swiper2.png";
+import swiper3 from "../../assets/img/swiper3.png";
+import swiper4 from "../../assets/img/swiper4.png";
 const MyCarousel = () => {
   return (
     <Carousel
