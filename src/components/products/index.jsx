@@ -2,10 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../context/productContext";
 import axios from "axios";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { BasketContext } from "../../context/basketContext";
 
 const Products = () => {
   const { data, setData } = useContext(ProductContext);
-
+const {setBasket}=useContext(BasketContext)
+const AddToBasket=(post)=>{
+  setBasket(post)
+}
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -49,7 +53,10 @@ const Products = () => {
               {value.price3} so'm
             </p>
           </div>
-          <button className="w-full bg-yellow-400 text-black font-semibold py-2 mt-4 rounded-lg flex items-center gap-4 justify-center hover:bg-yellow-500 transition">
+          <button
+            onClick={() => AddToBasket(post)}
+            className="w-full bg-yellow-400 text-black font-semibold py-2 mt-4 rounded-lg flex items-center gap-4 justify-center hover:bg-yellow-500 transition"
+          >
             <MdOutlineShoppingCart className="text-black text-2xl" /> Savatga
           </button>
         </div>
