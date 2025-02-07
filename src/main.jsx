@@ -1,11 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import '../src/index.css'
-import { RouterProvider } from 'react-router-dom'
-import { root } from './router'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "../src/index.css";
+import { RouterProvider } from "react-router-dom";
+import { root } from "./router";
+import { ProductContextProvider } from "./context/productContext";
+import { BasketContextProvider } from "./context/basketContext";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-   <RouterProvider  router={root}/>
-  </StrictMode>,
-)
+    <ProductContextProvider>
+      <BasketContextProvider>
+        <RouterProvider router={root} />
+      </BasketContextProvider>
+    </ProductContextProvider>
+  </StrictMode>
+);
