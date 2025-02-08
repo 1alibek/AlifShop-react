@@ -30,7 +30,7 @@ const Header = () => {
           type="text"
           placeholder="Tovarlarni izlash..."
         />
-        <button className="bg-[#ffbe1f] px-4  rounded-r-md h-full py-3">
+        <button className="bg-[#ffbe1f] px-4 h-full py-3">
           <CiSearch className="text-2xl font-medium text-bold" />
         </button>
       </div>

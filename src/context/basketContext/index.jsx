@@ -1,10 +1,11 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 
 const BasketContext = createContext();
 const BasketContextProvider = ({ children }) => {
   const initialState = {
     shop: JSON.parse(localStorage.getItem("shop")) || [],
   };
+
   const reducer = (state, action) => {
     switch (action.type) {
       case "add":
@@ -23,20 +24,37 @@ const BasketContextProvider = ({ children }) => {
         };
         localStorage.setItem("shop", JSON.stringify(newData.shop));
         return newData;
+
       case "delete":
         let deleteData = state.shop.filter(
           (value) => value.id !== action.deleteId
         );
         localStorage.setItem("shop", JSON.stringify(deleteData));
-        let newDeleteData = {
-          ...state,
-          shop: deleteData,
-        };
-        console.log(newDeleteData, "aa");
+        return { ...state, shop: deleteData };
 
-        return newDeleteData;
+      case "increment":
+        let incData = state.shop.map((value) =>
+          value.id === action.productId
+            ? { ...value, counter: value.counter + 1 }
+            : value
+        );
+        localStorage.setItem("shop", JSON.stringify(incData));
+        return { ...state, shop: incData };
+
+      case "decrement":
+        let decData = state.shop.map((value) =>
+          value.id === action.productId && value.counter > 1
+            ? { ...value, counter: value.counter - 1 }
+            : value
+        );
+        localStorage.setItem("shop", JSON.stringify(decData));
+        return { ...state, shop: decData };
+
+      default:
+        return state;
     }
   };
+
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <BasketContext.Provider value={{ state, dispatch }}>
@@ -44,4 +62,5 @@ const BasketContextProvider = ({ children }) => {
     </BasketContext.Provider>
   );
 };
+
 export { BasketContext, BasketContextProvider };

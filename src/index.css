@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.gridBox{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 0 70px;
+    gap: 30px;
+}
