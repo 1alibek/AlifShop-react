@@ -7,7 +7,7 @@ import { IoIosMenu } from 'react-icons/io';
 import { CiSearch } from 'react-icons/ci';
 
 const Header = () => {
-    const {store}=useContext(BasketContext)
+    const {state}=useContext(BasketContext)
   return (
     <div className="flex justify-between items-center py-3  mt-2">
       <Link to={"/"} className="flex items-center">
@@ -39,7 +39,7 @@ const Header = () => {
         <div className="relative">
           <MdOutlineShoppingCart className="text-3xl" />
           <p className="absolute top-[-12px] right-[-10px] bg-red-600 px-2 rounded-full text-white">
-            {store?.length}
+            {state.shop?.length}
           </p>
         </div>
         <p className="font-medium">Savatcha</p>
