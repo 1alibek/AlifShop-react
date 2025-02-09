@@ -3,13 +3,20 @@ import { BasketContext } from "../../context/basketContext";
 
 const ShopTotalPrice = () => {
   const { state } = useContext(BasketContext);
+  const totalPrice = state.shop.reduce(
+    (acc, item) => acc + item.price3 * item.counter,
+    0
+  );
+
   return (
     <div>
       {state.shop.length !== 0 ? (
         <div className="rounded-lg bg-gray-100 px-4 py-5 col-span-1">
           <div className="grid grid-cols-2">
             <p className="col-span-1 pr-4 font-medium text-xl">Jami</p>
-            <p className="col-span-1 pr-4 font-medium text-xl">so'm</p>
+            <p className="col-span-1 pr-4 font-medium text-xl">
+              {totalPrice.toLocaleString()} so'm
+            </p>
           </div>
           <div className="mt-3 border-b-2 border-gray-300 pb-4">
             <div className="grid grid-cols-2">
@@ -30,10 +37,10 @@ const ShopTotalPrice = () => {
               bo'ylab 3 kungacha
             </p>
           </div>
-          <button className="transition mt-3 duration-200 rounded-lg   flex items-center justify-center gap-2  font-medium bg-[#ffbe1f]  px-5 py-4 w-full">
+          <button className="transition mt-3 duration-200 rounded-lg flex items-center justify-center gap-2 font-medium bg-[#ffbe1f] px-5 py-4 w-full">
             Muddatli To'lovga olish
           </button>
-          <button className="transition mt-3 duration-200 rounded-lg   flex items-center justify-center gap-2 border-2 border-gray-300  font-medium bg-[white]  px-5 py-4 w-full">
+          <button className="transition mt-3 duration-200 rounded-lg flex items-center justify-center gap-2 border-2 border-gray-300 font-medium bg-[white] px-5 py-4 w-full">
             Karta orqali sotib olish
           </button>
         </div>

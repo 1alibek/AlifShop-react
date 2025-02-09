@@ -8,7 +8,6 @@ import ShopTotalPrice from "../../components/shopTotalPrice";
 
 const Basket = () => {
   const { dispatch, state } = useContext(BasketContext);
-
   return (
     <div className="w-[90%] m-auto min-[14400px]:w-[1440px]">
       <Header />
@@ -48,29 +47,39 @@ const Basket = () => {
                     kundan boshlab
                   </p>
                   <div className="flex items-center justify-between w-full py-4">
-                    <div className="bg-gray-100 rounded-lg w-[150px] flex justify-around items-center">
-                      <button
-                        onClick={() =>
-                          dispatch({ type: "decrement", productId: value.id })
-                        }
-                        className="border-0 p-1"
-                        disabled={value.counter === 1}
-                      >
-                        -
-                      </button>
+                    <div className="flex items-center gap-4">
+                      <div className="bg-gray-100 rounded-lg w-[150px] flex justify-around items-center">
+                        <button
+                          onClick={() =>
+                            dispatch({ type: "decrement", productId: value.id })
+                          }
+                          className="border-0 p-1"
+                          disabled={value.counter === 1}
+                        >
+                          -
+                        </button>
 
-                      <span className="mx-2 font-medium">{value.counter}</span>
+                        <span className="mx-2 font-medium">
+                          {value.counter}
+                        </span>
 
-                      <button
-                        onClick={() =>
-                          dispatch({ type: "increment", productId: value.id })
-                        }
-                        className="border-0"
-                      >
-                        +
-                      </button>
+                        <button
+                          onClick={() =>
+                            dispatch({ type: "increment", productId: value.id })
+                          }
+                          className="border-0"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <p className="text-[14px] text-[#5d6d7d] flex items-center gap-1">
+                        Jami:
+                        <span className="text-[black]">
+                          {value.price3*value.counter}
+                        </span>
+                        so'm
+                      </p>
                     </div>
-
                     <button
                       onClick={() => {
                         dispatch({ type: "delete", deleteId: value?.id });

@@ -38,9 +38,10 @@ const Header = () => {
       <Link to={"/basket"} className="flex flex-col items-center gap-1">
         <div className="relative">
           <MdOutlineShoppingCart className="text-3xl" />
+            {state.shop.length!==0?
           <p className="absolute top-[-12px] right-[-10px] bg-red-600 px-2 rounded-full text-white">
             {state.shop?.length}
-          </p>
+          </p>:""}
         </div>
         <p className="font-medium">Savatcha</p>
       </Link>
